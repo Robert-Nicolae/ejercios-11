@@ -23,3 +23,19 @@ jobs:
     - name: ejectuta script
       run: 
         ./src/hola.sh
+
+   - name: Ejecutar script
+      run: ./src/hola.sh
+
+   - name: Crear carpeta backup
+      run: mkdir -p backup
+
+   - name: Comprimir carpeta datos
+     run: tar -czvf backup/datos.tar.gz datos/
+ 
+   - name: Subir copia de seguridad
+      uses: actions/upload-artifact@v4
+    with:
+      name: copia-seguridad
+        path: backup/datos.tar.gz
+
